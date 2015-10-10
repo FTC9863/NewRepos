@@ -72,12 +72,12 @@ public class zNxtTeleOp extends OpMode {
    */
   @Override
   public void init() {
-    motorRight = hardwareMap.dcMotor.get("motor_2");
-    motorLeft = hardwareMap.dcMotor.get("motor_1");
+    motorRight = hardwareMap.dcMotor.get("lm2");
+    motorLeft = hardwareMap.dcMotor.get("lm1");
 //    claw = hardwareMap.servo.get("servo_6"); // channel 6
 //    wrist = hardwareMap.servo.get("servo_1"); // channel 1
 
-    wheelController = hardwareMap.dcMotorController.get("wheels");
+    wheelController = hardwareMap.dcMotorController.get("lmc");
   }
 
   /*

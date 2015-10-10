@@ -103,8 +103,8 @@ public class zK9TeleOp extends OpMode {
 		 *    "servo_1" controls the arm joint of the manipulator.
 		 *    "servo_6" controls the claw joint of the manipulator.
 		 */
-		motorRight = hardwareMap.dcMotor.get("motor_2");
-		motorLeft = hardwareMap.dcMotor.get("motor_1");
+		motorRight = hardwareMap.dcMotor.get("m2");
+		motorLeft = hardwareMap.dcMotor.get("m1");
 		motorLeft.setDirection(DcMotor.Direction.REVERSE);
 		
 //		arm = hardwareMap.servo.get("servo_1");
