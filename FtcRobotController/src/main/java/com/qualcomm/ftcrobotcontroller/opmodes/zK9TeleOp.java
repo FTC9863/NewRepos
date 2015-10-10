@@ -49,27 +49,27 @@ public class zK9TeleOp extends OpMode {
 	 * Also, as the claw servo approaches 0, the claw opens up (drops the game element).
 	 */
 	// TETRIX VALUES.
-	final static double ARM_MIN_RANGE  = 0.20;
-	final static double ARM_MAX_RANGE  = 0.90;
-	final static double CLAW_MIN_RANGE  = 0.20;
-	final static double CLAW_MAX_RANGE  = 0.7;
+//	final static double ARM_MIN_RANGE  = 0.20;
+//	final static double ARM_MAX_RANGE  = 0.90;
+//	final static double CLAW_MIN_RANGE  = 0.20;
+//	final static double CLAW_MAX_RANGE  = 0.7;
 
 	// position of the arm servo.
-	double armPosition;
+//	double armPosition;
 
 	// amount to change the arm servo position.
-	double armDelta = 0.1;
+//	double armDelta = 0.1;
 
 	// position of the claw servo
-	double clawPosition;
+//	double clawPosition;
 
 	// amount to change the claw servo position by
-	double clawDelta = 0.1;
+//	double clawDelta = 0.1;
 
 	DcMotor motorRight;
 	DcMotor motorLeft;
-	Servo claw;
-	Servo arm;
+//	Servo claw;
+//	Servo arm;
 
 	/**
 	 * Constructor
@@ -107,12 +107,12 @@ public class zK9TeleOp extends OpMode {
 		motorLeft = hardwareMap.dcMotor.get("motor_1");
 		motorLeft.setDirection(DcMotor.Direction.REVERSE);
 		
-		arm = hardwareMap.servo.get("servo_1");
-		claw = hardwareMap.servo.get("servo_6");
+//		arm = hardwareMap.servo.get("servo_1");
+//		claw = hardwareMap.servo.get("servo_6");
 
 		// assign the starting position of the wrist and claw
-		armPosition = 0.2;
-		clawPosition = 0.2;
+//		armPosition = 0.2;
+//		clawPosition = 0.2;
 	}
 
 	/*
@@ -156,31 +156,31 @@ public class zK9TeleOp extends OpMode {
 		if (gamepad1.a) {
 			// if the A button is pushed on gamepad1, increment the position of
 			// the arm servo.
-			armPosition += armDelta;
+//			armPosition += armDelta;
 		}
 
 		if (gamepad1.y) {
 			// if the Y button is pushed on gamepad1, decrease the position of
 			// the arm servo.
-			armPosition -= armDelta;
+//			armPosition -= armDelta;
 		}
 
 		// update the position of the claw
 		if (gamepad1.x) {
-			clawPosition += clawDelta;
+//			clawPosition += clawDelta;
 		}
 
 		if (gamepad1.b) {
-			clawPosition -= clawDelta;
+//			clawPosition -= clawDelta;
 		}
 
         // clip the position values so that they never exceed their allowed range.
-        armPosition = Range.clip(armPosition, ARM_MIN_RANGE, ARM_MAX_RANGE);
-        clawPosition = Range.clip(clawPosition, CLAW_MIN_RANGE, CLAW_MAX_RANGE);
+//        armPosition = Range.clip(armPosition, ARM_MIN_RANGE, ARM_MAX_RANGE);
+//        clawPosition = Range.clip(clawPosition, CLAW_MIN_RANGE, CLAW_MAX_RANGE);
 
 		// write position values to the wrist and claw servo
-		arm.setPosition(armPosition);
-		claw.setPosition(clawPosition);
+//		arm.setPosition(armPosition);
+//		claw.setPosition(clawPosition);
 
 
 
@@ -191,8 +191,8 @@ public class zK9TeleOp extends OpMode {
 		 * are currently write only.
 		 */
         telemetry.addData("Text", "*** Robot Data***");
-        telemetry.addData("arm", "arm:  " + String.format("%.2f", armPosition));
-        telemetry.addData("claw", "claw:  " + String.format("%.2f", clawPosition));
+//        telemetry.addData("arm", "arm:  " + String.format("%.2f", armPosition));
+//        telemetry.addData("claw", "claw:  " + String.format("%.2f", clawPosition));
         telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left));
         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right));
 
