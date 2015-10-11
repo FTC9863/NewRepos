@@ -114,6 +114,30 @@ public class zzNxtK9TeleOp extends OpMode {
   @Override
   public void loop() {
 
+    float throttle2 = -gamepad2.left_stick_y;
+    float direction2 = gamepad2.left_stick_x;
+    float right2 = throttle2 - direction2;
+    float left2 = throttle2 + direction2;
+
+    // clip the right/left values so that the values never exceed +/- 1
+    right2 = Range.clip(right2, -1, 1);
+    left2 = Range.clip(left2, -1, 1);
+
+    // scale the joystick value to make it easier to control
+    // the robot more precisely at slower speeds.
+//    right2 = (float)scaleInput(right2);
+//    left2 =  (float)scaleInput(left2);
+
+    // write the values to the motors
+    motorRight2.setPower(right2);
+    motorLeft2.setPower(left2);
+
+
+
+
+
+
+
     // The op mode should only use "write" methods (setPower, setChannelMode, etc) while in
     // WRITE_ONLY mode or SWITCHING_TO_WRITE_MODE
     if (allowedToWrite()) {
@@ -240,6 +264,10 @@ public class zzNxtK9TeleOp extends OpMode {
       telemetry.addData("left motor", motorLeft.getPower());
       telemetry.addData("right motor", motorRight.getPower());
       telemetry.addData("RunMode: ", motorLeft.getChannelMode().toString());
+
+      telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left2));
+      telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right2));
+
 
       // Only needed on Nxt devices, but not on USB devices
       wheelController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.WRITE_ONLY);
