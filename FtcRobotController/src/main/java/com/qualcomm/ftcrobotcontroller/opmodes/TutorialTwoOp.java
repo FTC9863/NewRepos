@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-/* Version 2.1.3
- * Update: Reformating
+/* Version 2.1.4
+ * Update: Comments have been re-written so that they make more sense to people
  */
 
 /*
@@ -15,46 +15,46 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 public class TutorialTwoOp extends OpMode {
-    final static double servoName_MIN_RANGE  = 0.20;              //This are stating the servo minimums and maximums
-    final static double servoName_MAX_RANGE  = 0.90;              //This are stating the servo minimums and maximums
-    double servoPosition;                                         //This is a variable stating the variable of the arm position
-    double servoDelta = 0.1;                                      //States The Arm delta and tells a position
+    final static double servoName_MIN_RANGE  = 0.20;              //This is a variable created to be used later
+    final static double servoName_MAX_RANGE  = 0.90;              //This is a variable created to be used later
+    double servoPosition;                                         //This is a variable representing the servo's position.
+    double servoDelta = 0.1;                                      //This is stating the location of one the servo variables
 
-    DcMotor motorName;                                            //This is like robotc's #pragma
-    Servo servoName;                                              //This is like robotc's #pragma
+    DcMotor motorName;                                            //A pragma for a DcMotor
+    Servo servoName;                                              //A pragma for a Servo
 
     public TutorialTwoOp() {
     }
     @Override
     public void init() {
-        motorName = hardwareMap.dcMotor.get("motorName");         //The Code introduced the second motor
-        motorName.setDirection(DcMotor.Direction.REVERSE);        //The Code stating that the direction of the motor is reverse
-        servoName = hardwareMap.servo.get("servoName");           //The Code introduced the First Servo
-        servoPosition = 0.2;                                      //This is stating the position of the arm.
+        motorName = hardwareMap.dcMotor.get("motorName");         //This is what the phone calls the motor
+        motorName.setDirection(DcMotor.Direction.REVERSE);        //This is saying in the code that the motor is in reverse mode
+        servoName = hardwareMap.servo.get("servoName");           //This is what the phone calls the motor
+        servoPosition = 0.2;                                      //This is stating the servoPosition variable's value
 
     }
     @Override
     public void loop() {
 
-        float throttle = -gamepad1.left_stick_y;                  //This is stating that the game pad controls the robot
-        float direction = gamepad1.right_stick_y;                 //This is stating that the game pad controls the robot again
-        float right = throttle - direction;                       //This is stating how the motors work
-        float left = throttle + direction;                        //This is stating how the motors work as well
+        float throttle = -gamepad1.left_stick_y;                  //This is stating the variable throttle, and stating its value
+        float direction = gamepad1.right_stick_y;              //This is stating the variable direction, and stating its value
+        float right = throttle - direction;                       //This is stating the variable right
+        float left = throttle + direction;                        //This is stating the variable left
 
-        right = Range.clip(right, -1, 1);                         //This is stating the robot controler can have a min of -1 and a max of 1
-        left = Range.clip(left, -1, 1);                           //Same thing
+        right = Range.clip(right, -1, 1);                         //This is stating that the variables right and left have a
+        left = Range.clip(left, -1, 1);                           //minimum of -1, and a maximum of 1.
 
-        right = (float)scaleInput(right);                         //This is making the robot more persise at slower speeds
-        left =  (float)scaleInput(left);                          //Same as above
+        right = (float)scaleInput(right);                         //This is making the variables right and left more accurate
+        left =  (float)scaleInput(left);                          //at lower values
 
-        motorName.setPower(right);                                //This makes the right motor go at the variable right
-        motorName.setPower(left);                                 //This makes the left motor go at the variable left
+        motorName.setPower(right);                                //This is making the variable motorName the power of the
+        motorName.setPower(left);                                 //variables right and left.
 
-        if (gamepad1.a) {                                         //This is an If statement. Controlding the Arm
+        if (gamepad1.a) {                                         //This is an If statement.
             servoPosition += servoDelta;
         }
 
-        if (gamepad1.y) {
+        if (gamepad1.y) {                                         //This is an If statement.
             servoPosition -= servoDelta;
         }
 
