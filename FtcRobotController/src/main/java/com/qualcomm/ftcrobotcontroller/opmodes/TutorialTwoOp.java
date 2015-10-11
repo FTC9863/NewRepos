@@ -4,8 +4,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
+/* Version 2.1.1
+ * Update: Taken out all the '//-ed; duplicates.
+ */
+
 /*
- * Version 2.1.0
  * WARNING:
  *   This code is not to be used as a TeleOp code. It is to be used as a tutorial and some elements
  * of the code will over-ride the code and may cause errors within your code or your robot.
@@ -14,27 +17,21 @@ import com.qualcomm.robotcore.util.Range;
 public class TutorialTwoOp extends OpMode {
     final static double ARM_MIN_RANGE  = 0.20;      //This are stating the servo minimums and maximums
     final static double ARM_MAX_RANGE  = 0.90;      //This are stating the servo minimums and maximums
-//    final static double CLAW_MIN_RANGE  = 0.20;     //This are stating the servo minimums and maximums
-//    final static double CLAW_MAX_RANGE  = 0.7;      //This are stating the servo minimums and maximums
     double armPosition;                             //This is a variable stating the variable of the arm position
     double armDelta = 0.1;                          //States The Arm delta and tells a position
-//    double clawPosition;                            //This is stating the Claw
-//    double clawDelta = 0.1;                         //This is stating the Claw delta
+
     DcMotor motorName;                              //This is like robotc's #pragma
-//    DcMotor motorLeft;                            //This is like robotc's #pragma
-//    Servo claw;                                     //This is like robotc's #pragma
     Servo arm;                                      //This is like robotc's #pragma
+
     public TutorialTwoOp() {
     }
     @Override
     public void init() {
         motorName = hardwareMap.dcMotor.get("motor_2");         //The Code introduced the second motor
-//        motorLeft = hardwareMap.dcMotor.get("motor_1");       //The Code introduced the first motor
         motorName.setDirection(DcMotor.Direction.REVERSE);      //The Code stating that the direction of the motor is reverse
         arm = hardwareMap.servo.get("servo_1");                 //The Code introduced the First Servo
-//        claw = hardwareMap.servo.get("servo_6");                //The Code introduced the Second Servo
         armPosition = 0.2;                                      //This is stating the position of the arm.
-//        clawPosition = 0.2;                                     //This is stating the position of the servo.
+
     }
     @Override
     public void loop() {
@@ -53,47 +50,23 @@ public class TutorialTwoOp extends OpMode {
         motorName.setPower(right);                             //This makes the right motor go at the variable right
         motorName.setPower(left);                               //This makes the left motor go at the variable left
 
-        // update the position of the arm.
-        if (gamepad1.a) {
-            // if the A button is pushed on gamepad1, increment the position of
-            // the arm servo.
+        if (gamepad1.a) {    //This is an If statement. Controlding the Arm
             armPosition += armDelta;
         }
 
         if (gamepad1.y) {
-            // if the Y button is pushed on gamepad1, decrease the position of
-            // the arm servo.
             armPosition -= armDelta;
         }
 
-        // update the position of the claw
-        if (gamepad1.x) {
-//            clawPosition += clawDelta;
-        }
+        //  WARNING:(2)
+        //  CODE BELOW NOT YET MODIFIED
+        //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
 
-        if (gamepad1.b) {
-//            clawPosition -= clawDelta;
-        }
-
-        // clip the position values so that they never exceed their allowed range.
         armPosition = Range.clip(armPosition, ARM_MIN_RANGE, ARM_MAX_RANGE);
-//        clawPosition = Range.clip(clawPosition, CLAW_MIN_RANGE, CLAW_MAX_RANGE);
-
-        // write position values to the wrist and claw servo
         arm.setPosition(armPosition);
-//        claw.setPosition(clawPosition);
 
-
-
-		/*
-		 * Send telemetry data back to driver station. Note that if we are using
-		 * a legacy NXT-compatible motor controller, then the getPower() method
-		 * will return a null value. The legacy NXT-compatible motor controllers
-		 * are currently write only.
-		 */
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("arm", "arm:  " + String.format("%.2f", armPosition));
-//        telemetry.addData("claw", "claw:  " + String.format("%.2f", clawPosition));
         telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left));
         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right));
 
