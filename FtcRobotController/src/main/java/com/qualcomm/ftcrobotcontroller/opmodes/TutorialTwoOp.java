@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 /* Version 2.1.1
- * Update: Taken out all the '//-ed; duplicates.
+ * Update: Renamed all servos
  */
 
 /*
@@ -15,22 +15,22 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 public class TutorialTwoOp extends OpMode {
-    final static double ARM_MIN_RANGE  = 0.20;      //This are stating the servo minimums and maximums
-    final static double ARM_MAX_RANGE  = 0.90;      //This are stating the servo minimums and maximums
-    double armPosition;                             //This is a variable stating the variable of the arm position
-    double armDelta = 0.1;                          //States The Arm delta and tells a position
+    final static double servoName_MIN_RANGE  = 0.20;      //This are stating the servo minimums and maximums
+    final static double servoName_MAX_RANGE  = 0.90;      //This are stating the servo minimums and maximums
+    double servoPosition;                                 //This is a variable stating the variable of the arm position
+    double servoDelta = 0.1;                              //States The Arm delta and tells a position
 
-    DcMotor motorName;                              //This is like robotc's #pragma
-    Servo arm;                                      //This is like robotc's #pragma
+    DcMotor motorName;                                    //This is like robotc's #pragma
+    Servo servoName;                                            //This is like robotc's #pragma
 
     public TutorialTwoOp() {
     }
     @Override
     public void init() {
-        motorName = hardwareMap.dcMotor.get("motor_2");         //The Code introduced the second motor
-        motorName.setDirection(DcMotor.Direction.REVERSE);      //The Code stating that the direction of the motor is reverse
-        arm = hardwareMap.servo.get("servo_1");                 //The Code introduced the First Servo
-        armPosition = 0.2;                                      //This is stating the position of the arm.
+        motorName = hardwareMap.dcMotor.get("motorName");         //The Code introduced the second motor
+        motorName.setDirection(DcMotor.Direction.REVERSE);        //The Code stating that the direction of the motor is reverse
+        servoName = hardwareMap.servo.get("servoName");                 //The Code introduced the First Servo
+        servoPosition = 0.2;                                      //This is stating the position of the arm.
 
     }
     @Override
@@ -51,22 +51,22 @@ public class TutorialTwoOp extends OpMode {
         motorName.setPower(left);                               //This makes the left motor go at the variable left
 
         if (gamepad1.a) {    //This is an If statement. Controlding the Arm
-            armPosition += armDelta;
+            servoPosition += servoDelta;
         }
 
         if (gamepad1.y) {
-            armPosition -= armDelta;
+            servoPosition -= servoDelta;
         }
 
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
 
-        armPosition = Range.clip(armPosition, ARM_MIN_RANGE, ARM_MAX_RANGE);
-        arm.setPosition(armPosition);
+        servoPosition = Range.clip(servoPosition, servoName_MIN_RANGE, servoName_MAX_RANGE);
+        servoName.setPosition(servoPosition);
 
         telemetry.addData("Text", "*** Robot Data***");
-        telemetry.addData("arm", "arm:  " + String.format("%.2f", armPosition));
+        telemetry.addData("arm", "arm:  " + String.format("%.2f", servoPosition));
         telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left));
         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right));
 
