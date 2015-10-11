@@ -59,6 +59,9 @@ public class zzNxtK9TeleOp extends OpMode {
   DcMotorController wheelController;
   DcMotor motorRight;
   DcMotor motorLeft;
+  DcMotor motorRight2;
+  DcMotor motorLeft2;
+
 
 //  Servo claw;
 //  Servo wrist;
@@ -77,6 +80,10 @@ public class zzNxtK9TeleOp extends OpMode {
 //    wrist = hardwareMap.servo.get("servo_1"); // channel 1
 
     wheelController = hardwareMap.dcMotorController.get("lmc");
+
+    motorRight2 = hardwareMap.dcMotor.get("m2");
+    motorLeft2 = hardwareMap.dcMotor.get("m1");
+    motorLeft2.setDirection(DcMotor.Direction.REVERSE);
   }
 
   /*

@@ -133,23 +133,23 @@ public class zzK9TeleOp extends OpMode {
 		// 1 is full down
 		// direction: left_stick_x ranges from -1 to 1, where -1 is full left
 		// and 1 is full right
-		float throttle = -gamepad1.left_stick_y;
-		float direction = gamepad1.left_stick_x;
-		float right = throttle - direction;
-		float left = throttle + direction;
+		float throttle2 = -gamepad2.left_stick_y;
+		float direction2 = gamepad2.left_stick_x;
+		float right2 = throttle2 - direction2;
+		float left2 = throttle2 + direction2;
 
 		// clip the right/left values so that the values never exceed +/- 1
-		right = Range.clip(right, -1, 1);
-		left = Range.clip(left, -1, 1);
+		right2 = Range.clip(right2, -1, 1);
+		left2 = Range.clip(left2, -1, 1);
 
 		// scale the joystick value to make it easier to control
 		// the robot more precisely at slower speeds.
-		right = (float)scaleInput(right);
-		left =  (float)scaleInput(left);
+		right2 = (float)scaleInput(right2);
+		left2 =  (float)scaleInput(left2);
 		
 		// write the values to the motors
-		motorRight2.setPower(right);
-		motorLeft2.setPower(left);
+		motorRight2.setPower(right2);
+		motorLeft2.setPower(left2);
 
 		// update the position of the arm.
 		if (gamepad1.a) {
@@ -192,8 +192,8 @@ public class zzK9TeleOp extends OpMode {
         telemetry.addData("Text", "*** Robot Data***");
 //        telemetry.addData("arm", "arm:  " + String.format("%.2f", armPosition));
 //        telemetry.addData("claw", "claw:  " + String.format("%.2f", clawPosition));
-        telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left));
-        telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right));
+        telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left2));
+        telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right2));
 
 	}
 
