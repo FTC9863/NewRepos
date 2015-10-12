@@ -43,7 +43,7 @@ public class MRDV1_Legacy_Test extends OpMode {
 
     DcMotor motorRight;
     DcMotor motorLeft;
-    DcMotor motorjointRight;
+    DcMotor motorarm;
     DcMotor motorjointLeft;
     DcMotorController JointController;
     DcMotor motorRight2;
@@ -85,7 +85,7 @@ public class MRDV1_Legacy_Test extends OpMode {
         motorRight = hardwareMap.dcMotor.get("m1");
         motorLeft = hardwareMap.dcMotor.get("m2");
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
-        motorjointRight = hardwareMap.dcMotor.get("mj1");
+        motorarm = hardwareMap.dcMotor.get("ma1");
         motorjointLeft = hardwareMap.dcMotor.get("mj2");
         motorjointLeft.setDirection(DcMotor.Direction.REVERSE);
         JointController = hardwareMap.dcMotorController.get("jc1");
@@ -137,21 +137,20 @@ public class MRDV1_Legacy_Test extends OpMode {
         left =  (float)scaleInput(left);
 
         // write the values to the motors
-       // if (top == true){
+        if (top == true){
 
-      //      motorjointRight.setPower(0.4f);
-      //      motorjointLeft.setPower(0.4f);
-      //  }
-      //  if (bottom == true){
 
-      //      motorjointRight.setPower(-0.4f);
-      //      motorjointLeft.setPower(-0.4f);
-     //   }
-    //    if (bottom == false && top == false){
+            motorarm.setPower(0.4f);
+        }  if (bottom == true){
 
-     //       motorjointRight.setPower(0.0f);
-     //       motorjointLeft.setPower(0.0f);
-     //   }
+
+            motorarm.setPower(-0.4f);
+        }
+        if (bottom == false && top == false){
+
+
+            motorarm.setPower(0.0f);
+        }
 
         if(leftDPAD == true){
             drivetype = true;
@@ -171,7 +170,6 @@ public class MRDV1_Legacy_Test extends OpMode {
             motorRight.setPower(-right);
             motorLeft.setPower(-right);
             motorjointLeft.setPower(left);
-            motorjointRight.setPower(left);
             motorRight2.setPower(-right);
             motorLeft2.setPower(-right);
         }
