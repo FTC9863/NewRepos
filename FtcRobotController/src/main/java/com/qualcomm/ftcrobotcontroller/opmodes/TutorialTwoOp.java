@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-/* Version 2.1.4
- * Update: Comments have been re-written so that they make more sense to people
+/* Version 2.2.0
+ * Update: Sensors
  */
 
 /*
@@ -37,7 +37,7 @@ public class TutorialTwoOp extends OpMode {
     public void loop() {
 
         float throttle = -gamepad1.left_stick_y;                  //This is stating the variable throttle, and stating its value
-        float direction = gamepad1.right_stick_y;              //This is stating the variable direction, and stating its value
+        float direction = gamepad1.right_stick_y;                 //This is stating the variable direction, and stating its value
         float right = throttle - direction;                       //This is stating the variable right
         float left = throttle + direction;                        //This is stating the variable left
 
