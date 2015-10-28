@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
  * <p>
  * Enables control of the robot via the gamepad
  */
-public class MRDV1_LegacyTest extends OpMode {
+public class MRDV1_Legacy_Test extends OpMode {
 
     /*
      * Note: the configuration of the servos is such that
@@ -55,7 +55,7 @@ public class MRDV1_LegacyTest extends OpMode {
     /**
      * Constructor
      */
-    public MRDV1_LegacyTest() {
+    public MRDV1_Legacy_Test() {
 
     }
 
@@ -88,7 +88,7 @@ public class MRDV1_LegacyTest extends OpMode {
         motorjointRight = hardwareMap.dcMotor.get("mj1");
         motorjointLeft = hardwareMap.dcMotor.get("mj2");
         motorjointLeft.setDirection(DcMotor.Direction.REVERSE);
-        JointController = hardwareMap.dcMotorController.get("jc");
+        JointController = hardwareMap.dcMotorController.get("jc1");
         motorRight2 = hardwareMap.dcMotor.get("m3");
         motorLeft2 = hardwareMap.dcMotor.get("m4");
         motorLeft2.setDirection(DcMotor.Direction.REVERSE);
@@ -137,21 +137,21 @@ public class MRDV1_LegacyTest extends OpMode {
         left =  (float)scaleInput(left);
 
         // write the values to the motors
-        if (top == true){
+       // if (top == true){
 
-            motorjointRight.setPower(0.4f);
-            motorjointLeft.setPower(0.4f);
-        }
-        if (bottom == true){
+      //      motorjointRight.setPower(0.4f);
+      //      motorjointLeft.setPower(0.4f);
+      //  }
+      //  if (bottom == true){
 
-            motorjointRight.setPower(-0.4f);
-            motorjointLeft.setPower(-0.4f);
-        }
-        if (bottom == false && top == false){
+      //      motorjointRight.setPower(-0.4f);
+      //      motorjointLeft.setPower(-0.4f);
+     //   }
+    //    if (bottom == false && top == false){
 
-            motorjointRight.setPower(0.0f);
-            motorjointLeft.setPower(0.0f);
-        }
+     //       motorjointRight.setPower(0.0f);
+     //       motorjointLeft.setPower(0.0f);
+     //   }
 
         if(leftDPAD == true){
             drivetype = true;
@@ -168,12 +168,12 @@ public class MRDV1_LegacyTest extends OpMode {
         if(drivetype == false){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -0.4f, 0.4f);
-            motorRight.setPower(right);
-            motorLeft.setPower(right);
+            motorRight.setPower(-right);
+            motorLeft.setPower(-right);
             motorjointLeft.setPower(left);
             motorjointRight.setPower(left);
-            motorRight2.setPower(right);
-            motorLeft2.setPower(right);
+            motorRight2.setPower(-right);
+            motorLeft2.setPower(-right);
         }
 
 
@@ -232,8 +232,6 @@ public class MRDV1_LegacyTest extends OpMode {
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("Left Drive:", motorLeft.getPower());
         telemetry.addData("Right Drive:", motorRight.getPower());
-        telemetry.addData("Left Joint:", motorjointLeft.getPower());
-        telemetry.addData("Right Joint:", motorjointRight.getPower());
     }
 
     /*
