@@ -81,7 +81,7 @@ public class PushBotHardwareSensors extends PushBotTelemetry
 
             v_sensor_touch = null;
         }
-
+//
         try
         {
             v_sensor_ir = hardwareMap.irSeekerSensor.get ("sensor_ir");
