@@ -1,4 +1,4 @@
-package com.qualcomm.ftcrobotcontroller.opmodes;
+package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 //This includes the following links
