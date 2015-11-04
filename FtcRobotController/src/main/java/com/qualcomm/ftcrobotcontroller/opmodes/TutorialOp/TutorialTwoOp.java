@@ -3,18 +3,16 @@ package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-//Sensors start
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.IrSeekerSensor;
-//Sensors end
 import com.qualcomm.robotcore.util.Range;
 
-/* Version 2.3.2
- * Update: Sensors
+/* Version 2.4.3
+ * Update: Sensors have been moved to a new code extending this one.
+ * Update: Sensor Support
  *
  * Supporting:
  * Color Sensor
  * Ir Sensor
+ * *Touch Sensor*
  */
 
 /*
@@ -31,9 +29,6 @@ public class TutorialTwoOp extends OpMode {
 
     DcMotor motorName;                                            //A pragma for a DcMotor
     Servo servoName;                                              //A pragma for a Servo
-    ColorSensor cSensorName;                                      //A pragma for a Color Sensor
-    IrSeekerSensor irSensorName;                                  //A pragma for an IR seeker
-
 
     public TutorialTwoOp() {
     }
@@ -63,20 +58,20 @@ public class TutorialTwoOp extends OpMode {
         motorName.setPower(right);                                //This is making the variable motorName the power of the
         motorName.setPower(left);                                 //variables right and left.
 
-        if (gamepad1.a) {                                         //This is an If statement.
-            servoPosition += servoDelta;
+        if (gamepad1.a) {                                         //This is an If statement for gamepad button a.
         }
-
-        if (gamepad1.y) {                                         //This is an If statement.
-            servoPosition -= servoDelta;
+        if (gamepad1.y) {                                         //This is an If statement for gamepad button y.
         }
-        //  Sensors
 
         if (cSensorName.equals(0)) {                              //This is a paradox, asking for a null value if it is present
                                                                   //Causing for it to never activate. Because if it is expecting
         }                                                         //a presence, it wont activate if null is true.
 
         if (irSensorName.signalDetected()){                       //This is saying that if a signal is present, do the if
+
+        }
+
+        if (tSensorName.isPressed()){                             //This is saying if the Touch sensor is true do the if
 
         }
 
