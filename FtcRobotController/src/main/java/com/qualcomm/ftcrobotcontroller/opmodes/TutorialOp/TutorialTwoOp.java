@@ -1,15 +1,20 @@
 package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+//Sensors start
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.IrSeekerSensor;
+//Sensors end
 import com.qualcomm.robotcore.util.Range;
 
-/* Version 2.3.1
+/* Version 2.3.2
  * Update: Sensors
  *
  * Supporting:
  * Color Sensor
+ * Ir Sensor
  */
 
 /*
@@ -27,6 +32,7 @@ public class TutorialTwoOp extends OpMode {
     DcMotor motorName;                                            //A pragma for a DcMotor
     Servo servoName;                                              //A pragma for a Servo
     ColorSensor cSensorName;                                      //A pragma for a Color Sensor
+    IrSeekerSensor irSensorName;                                  //A pragma for an IR seeker
 
 
     public TutorialTwoOp() {
@@ -64,11 +70,16 @@ public class TutorialTwoOp extends OpMode {
         if (gamepad1.y) {                                         //This is an If statement.
             servoPosition -= servoDelta;
         }
-        //  WARNING:
-        //  The following strip of code is a test
-        if (cSensorName.equals(0)) {
+        //  Sensors
+
+        if (cSensorName.equals(0)) {                              //This is a paradox, asking for a null value if it is present
+                                                                  //Causing for it to never activate. Because if it is expecting
+        }                                                         //a presence, it wont activate if null is true.
+
+        if (irSensorName.signalDetected()){                       //This is saying that if a signal is present, do the if
 
         }
+
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
