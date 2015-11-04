@@ -2,10 +2,14 @@ package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.util.Range;
 
-/* Version 2.2.0
+/* Version 2.3.1
  * Update: Sensors
+ *
+ * Supporting:
+ * Color Sensor
  */
 
 /*
@@ -22,6 +26,8 @@ public class TutorialTwoOp extends OpMode {
 
     DcMotor motorName;                                            //A pragma for a DcMotor
     Servo servoName;                                              //A pragma for a Servo
+    ColorSensor cSensorName;                                      //A pragma for a Color Sensor
+
 
     public TutorialTwoOp() {
     }
@@ -30,6 +36,7 @@ public class TutorialTwoOp extends OpMode {
         motorName = hardwareMap.dcMotor.get("motorName");         //This is what the phone calls the motor
         motorName.setDirection(DcMotor.Direction.REVERSE);        //This is saying in the code that the motor is in reverse mode
         servoName = hardwareMap.servo.get("servoName");           //This is what the phone calls the motor
+        servoName.setDirection(Servo.Direction.REVERSE);          //This is saying in the code that the servo is in reverse mode
         servoPosition = 0.2;                                      //This is stating the servoPosition variable's value
 
     }
@@ -57,7 +64,11 @@ public class TutorialTwoOp extends OpMode {
         if (gamepad1.y) {                                         //This is an If statement.
             servoPosition -= servoDelta;
         }
+        //  WARNING:
+        //  The following strip of code is a test
+        if (cSensorName.equals(0)) {
 
+        }
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD

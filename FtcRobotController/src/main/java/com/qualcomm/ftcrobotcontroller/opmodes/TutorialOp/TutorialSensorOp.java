@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 //This includes the following links
 //
 //
-public class TutorialSensorOp extends TutorialTwoOp{
+public class TutorialSensorOp{
 
-    ColorSensor sensorName;
+    ColorSensor colorSensorName;
 
-    sensorName = hardwareMap.ColorSensor.get("sensorName")
+    colorSensorName = hardwareMap.ColorSensor.get("sensorName")
 }
