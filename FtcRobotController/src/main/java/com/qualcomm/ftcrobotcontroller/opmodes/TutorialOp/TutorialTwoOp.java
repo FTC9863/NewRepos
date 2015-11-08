@@ -1,6 +1,5 @@
-/* Version 2.4.9
+/* Version 2.5.0
  * Update: Reformatting
- * Update: Sensor Support
  *
  * Supporting:
  * Color Sensor
@@ -8,8 +7,8 @@
  * Touch Sensor
  * Ultrasonic
  * Gyro
- * *Compass*
- * *Light*
+ * Compass
+ * Light
  *
  * WARNING:
  *   This code is not to be used as a TeleOp code. It is to be used as a tutorial and some elements
@@ -76,36 +75,26 @@ public class TutorialTwoOp extends OpMode{
         motorName.setPower(left);                                 //variables right and left.
 
         if (gamepad1.a) {                                         //This is an If statement for gamepad button a.
-
         }
         if (gamepad1.y) {                                         //This is an If statement for gamepad button y.
         }
-
         if (cSensorName.equals(0)) {
         }
-
         if (irsSensorName.signalDetected()){
         }
-
         if (tSensorName.isPressed()){
         }
-
         if (usSensorName.equals(0)){
         }
-
         if (gSensorName.equals(0)){
         }
-
         if (cpsSensorName.equals(0)){
         }
-
         if (lsensorName.equals(0)){
         }
-
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
-
         servoPosition = Range.clip(servoPosition, servoName_MIN_RANGE, servoName_MAX_RANGE);
         servoName.setPosition(servoPosition);
 
