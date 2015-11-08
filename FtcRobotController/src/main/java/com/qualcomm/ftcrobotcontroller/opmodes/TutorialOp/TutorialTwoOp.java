@@ -1,6 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
@@ -21,14 +22,16 @@ import com.qualcomm.robotcore.util.Range;
  * of the code will over-ride the code and may cause errors within your code or your robot.
  */
 
-public class TutorialTwoOp extends OpMode {
+public class TutorialTwoOp extends OpMode{
+
     final static double servoName_MIN_RANGE  = 0.20;              //This is a variable created to be used later
     final static double servoName_MAX_RANGE  = 0.90;              //This is a variable created to be used later
     double servoPosition;                                         //This is a variable representing the servo's position.
-    double servoDelta = 0.1;                                      //This is stating the location of one the servo variables
+    //double servoDelta = 0.1;                                    //This is stating the location of one the servo variables
 
     DcMotor motorName;                                            //A pragma for a DcMotor
     Servo servoName;                                              //A pragma for a Servo
+    ColorSensor cSensor;
 
     public TutorialTwoOp() {
     }
@@ -59,22 +62,15 @@ public class TutorialTwoOp extends OpMode {
         motorName.setPower(left);                                 //variables right and left.
 
         if (gamepad1.a) {                                         //This is an If statement for gamepad button a.
+
         }
         if (gamepad1.y) {                                         //This is an If statement for gamepad button y.
         }
 
-        if (cSensorName.equals(0)) {                              //This is a paradox, asking for a null value if it is present
-                                                                  //Causing for it to never activate. Because if it is expecting
-        }                                                         //a presence, it wont activate if null is true.
-
-        if (irSensorName.signalDetected()){                       //This is saying that if a signal is present, do the if
+        if (cSensor.equals(0)) {
 
         }
-
-        if (tSensorName.isPressed()){                             //This is saying if the Touch sensor is true do the if
-
         }
-
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
