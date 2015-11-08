@@ -5,8 +5,9 @@
  * Supporting:
  * Color Sensor
  * Ir Sensor
- * *Touch Sensor*
- *
+ * Touch Sensor
+ * *Ultrasonic*
+ * *Gyro*
  *
  * WARNING:
  *   This code is not to be used as a TeleOp code. It is to be used as a tutorial and some elements
@@ -15,20 +16,15 @@
 package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
-
-/* Version 2.4.3
- * Update: Sensors have been moved to a new code extending this one.
- * Update: Sensor Support
- *
- * Supporting:
- * Color Sensor
- * Ir Sensor
- * *Touch Sensor*
- */
+//Sensors
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.IrSeekerSensor;
+import com.qualcomm.robotcore.hardware.TouchSensor;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
+import com.qualcomm.robotcore.hardware.GyroSensor;
 
 public class TutorialTwoOp extends OpMode{
 
@@ -37,9 +33,13 @@ public class TutorialTwoOp extends OpMode{
     double servoPosition;                                         //This is a variable representing the servo's position.
     double servoDelta = 0.1;                                      //This is stating the location of one the servo variables
 
-    DcMotor motorName;                                            //This is introducing a DcMotor
-    Servo servoName;                                              //This is introducing a Servo
-    ColorSensor cSensor;                                          //This is introducing a Color Sensor
+    DcMotor motorName;                                            //This is introducing a  DcMotor
+    Servo servoName;                                              //This is introducing a  Servo
+    ColorSensor cSensorName;                                      //This is introducing a  Color Sensor
+    IrSeekerSensor irsSensorName;                                 //This is introducing an IrSeeker Sensor
+    TouchSensor tSensorName;                                      //This is introducing a  Touch sensors
+    UltrasonicSensor usSensorName;                                //This is introducing an Ultrasonic Sensor
+    GyroSensor gSensorName;                                       //This is introducing a  Gyro Sensor
 
     public TutorialTwoOp() {
     }
@@ -75,8 +75,19 @@ public class TutorialTwoOp extends OpMode{
         if (gamepad1.y) {                                         //This is an If statement for gamepad button y.
         }
 
-        if (cSensor.equals(0)) {
+        if (cSensorName.equals(0)) {
+        }
 
+        if (irsSensorName.signalDetected()){
+        }
+
+        if (tSensorName.isPressed()){
+        }
+
+        if (usSensorName.equals(0)){
+        }
+
+        if (gSensorName.equals(0)){
         }
 
         //  WARNING:(2)
