@@ -1,4 +1,4 @@
-/* Version 2.4.7
+/* Version 2.4.9
  * Update: Reformatting
  * Update: Sensor Support
  *
@@ -6,8 +6,10 @@
  * Color Sensor
  * Ir Sensor
  * Touch Sensor
- * *Ultrasonic*
- * *Gyro*
+ * Ultrasonic
+ * Gyro
+ * *Compass*
+ * *Light*
  *
  * WARNING:
  *   This code is not to be used as a TeleOp code. It is to be used as a tutorial and some elements
@@ -25,6 +27,8 @@ import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 import com.qualcomm.robotcore.hardware.GyroSensor;
+import com.qualcomm.robotcore.hardware.CompassSensor;
+import com.qualcomm.robotcore.hardware.LightSensor;
 
 public class TutorialTwoOp extends OpMode{
 
@@ -40,6 +44,8 @@ public class TutorialTwoOp extends OpMode{
     TouchSensor tSensorName;                                      //This is introducing a  Touch sensors
     UltrasonicSensor usSensorName;                                //This is introducing an Ultrasonic Sensor
     GyroSensor gSensorName;                                       //This is introducing a  Gyro Sensor
+    CompassSensor cpsSensorName;                                  //This is introducing a  Compass Sensor
+    LightSensor lsensorName;                                      //This is introducing a  Light Sensor
 
     public TutorialTwoOp() {
     }
@@ -88,6 +94,12 @@ public class TutorialTwoOp extends OpMode{
         }
 
         if (gSensorName.equals(0)){
+        }
+
+        if (cpsSensorName.equals(0)){
+        }
+
+        if (lsensorName.equals(0)){
         }
 
         //  WARNING:(2)
