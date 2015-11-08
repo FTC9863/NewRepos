@@ -27,7 +27,7 @@ public class TutorialTwoOp extends OpMode{
     final static double servoName_MIN_RANGE  = 0.20;              //This is a variable created to be used later
     final static double servoName_MAX_RANGE  = 0.90;              //This is a variable created to be used later
     double servoPosition;                                         //This is a variable representing the servo's position.
-    //double servoDelta = 0.1;                                    //This is stating the location of one the servo variables
+    double servoDelta = 0.1;                                      //This is stating the location of one the servo variables
 
     DcMotor motorName;                                            //A pragma for a DcMotor
     Servo servoName;                                              //A pragma for a Servo
@@ -55,8 +55,8 @@ public class TutorialTwoOp extends OpMode{
         right = Range.clip(right, -1, 1);                         //This is stating that the variables right and left have a
         left = Range.clip(left, -1, 1);                           //minimum of -1, and a maximum of 1.
 
-        right = (float)scaleInput(right);                         //This is making the variables right and left more accurate
-        left =  (float)scaleInput(left);                          //at lower values
+        right = (float) scaleInput(right);                         //This is making the variables right and left more accurate
+        left = (float) scaleInput(left);                          //at lower values
 
         motorName.setPower(right);                                //This is making the variable motorName the power of the
         motorName.setPower(left);                                 //variables right and left.
@@ -70,7 +70,7 @@ public class TutorialTwoOp extends OpMode{
         if (cSensor.equals(0)) {
 
         }
-        }
+
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
@@ -80,16 +80,10 @@ public class TutorialTwoOp extends OpMode{
 
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("arm", "arm:  " + String.format("%.2f", servoPosition));
-        telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left));
+        telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", left));
         telemetry.addData("right tgt pwr", "right pwr: " + String.format("%.2f", right));
-
     }
 
-    /*
-     * Code to run when the op mode is first disabled goes here
-     *
-     * @see com.qualcomm.robotcore.eventloop.opmode.OpMode#stop()
-     */
     @Override
     public void stop() {
 
@@ -119,7 +113,7 @@ public class TutorialTwoOp extends OpMode{
         }
 
         // get value from the array.
-        double dScale = 0.0;
+        double dScale;
         if (dVal < 0) {
             dScale = -scaleArray[index];
         } else {

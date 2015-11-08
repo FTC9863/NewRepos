@@ -16,11 +16,11 @@ public class TutorialTwoSensors extends TutorialTwoOp
     }
     @Override
     public void loop(){
-        if (cSensorName.equals(0)) {
+        //if (cSensorName.equals(0)) {
 
         }
-        if (tSensorName){
+        //if (tSensorName){
 
         }
-    }
-}
+//    }
+//}
