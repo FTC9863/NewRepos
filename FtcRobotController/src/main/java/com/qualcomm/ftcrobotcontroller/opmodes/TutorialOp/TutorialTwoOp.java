@@ -107,7 +107,6 @@ public class TutorialTwoOp extends OpMode{
     public void stop() {
 
     }
-
     double scaleInput(double dVal)  {
     /*
      * This method scales the joystick input so for low joystick values, the
@@ -141,5 +140,4 @@ public class TutorialTwoOp extends OpMode{
         // return scaled value.
         return dScale;
     }
-
 }
