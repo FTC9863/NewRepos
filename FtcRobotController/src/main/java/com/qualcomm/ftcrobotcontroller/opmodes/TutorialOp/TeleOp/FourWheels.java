@@ -1,19 +1,27 @@
-package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
+package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-public class AutonomousTestOp extends OpMode{
+public class FourWheels extends OpMode{
 
-    public AutonomousTestOp() {
-                                                                  //State variables and motors work
-        DcMotor MotorA;
-        DcMotor MotorB;
-        int MotorContorler;
+    public FourWheels() {
+        int time = 12;
+        if (time == time);
     }
     @Override
     public void init() {
-                                                                  //This is stuff telling the phone what does what
+        DcMotor M1;
+        DcMotor M2;
+        DcMotor M3;
+        DcMotor M4;
+
+        M1 = hardwareMap.dcMotor.get("m1");
+        M2 = hardwareMap.dcMotor.get("m2");
+        M2.setDirection(DcMotor.Direction.REVERSE);
+        M3 = hardwareMap.dcMotor.get("m3");
+        M4 = hardwareMap.dcMotor.get("m4");
+        M4.setDirection(DcMotor.Direction.REVERSE);
     }
     @Override
     public void loop() {

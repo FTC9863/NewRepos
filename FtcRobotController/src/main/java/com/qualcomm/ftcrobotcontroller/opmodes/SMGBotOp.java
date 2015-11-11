@@ -1,52 +1,31 @@
-/* Version 2.5.0
- * Update: Reformatting
- *
- * Supporting:
- * Color Sensor
- * Ir Sensor
- * Touch Sensor
- * Ultrasonic
- * Gyro
- * Compass
- * Light
- *
- * WARNING:
- *   This code is not to be used as a TeleOp code. It is to be used as a tutorial and some elements
- * of the code will over-ride the code and may cause errors within your code or your robot.
+/* Version 1.1.0
+ * Update: Modified
  */
-package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp;
+package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
-//Sensors
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.IrSeekerSensor;
-import com.qualcomm.robotcore.hardware.TouchSensor;
-import com.qualcomm.robotcore.hardware.UltrasonicSensor;
-import com.qualcomm.robotcore.hardware.GyroSensor;
-import com.qualcomm.robotcore.hardware.CompassSensor;
-import com.qualcomm.robotcore.hardware.LightSensor;
 
-public class TutorialTwoOp extends OpMode {
+//Sensors
+
+public class SMGBotOp extends OpMode {
 
     final static double servoName_MIN_RANGE  = 0.20;              //This is a variable created to be used later
     final static double servoName_MAX_RANGE  = 0.90;              //This is a variable created to be used later
     double servoPosition;                                         //This is a variable representing the servo's position.
     double servoDelta = 0.1;                                      //This is stating the location of one the servo variables
 
-    DcMotor motorName;                                            //This is introducing a  DcMotor
-    Servo servoName;                                              //This is introducing a  Servo
-    ColorSensor cSensorName;                                      //This is introducing a  Color Sensor
-    IrSeekerSensor irsSensorName;                                 //This is introducing an IrSeeker Sensor
-    TouchSensor tSensorName;                                      //This is introducing a  Touch sensors
-    UltrasonicSensor usSensorName;                                //This is introducing an Ultrasonic Sensor
-    GyroSensor gSensorName;                                       //This is introducing a  Gyro Sensor
-    CompassSensor cpsSensorName;                                  //This is introducing a  Compass Sensor
-    LightSensor lsensorName;                                      //This is introducing a  Light Sensor
+    DcMotor mtrDriveRight;                                        //This is introducing a  DcMotor
+    DcMotor MtrDriveLeft;                                         //This is introducing a  DcMotor
+    DcMotor mtrRotate;                                            //This is introducing a  DcMotor
+    DcMotor mtrArm;                                               //This is introducing a  DcMotor
 
-    public TutorialTwoOp() {
+    Servo servoGripRight;                                         //This is introducing a  Servo
+    Servo servoGripLeft;                                          //This is introducing a  Servo
+
+    public SMGBotOp() {
     }
     @Override
     public void init() {
@@ -78,20 +57,7 @@ public class TutorialTwoOp extends OpMode {
         }
         if (gamepad1.y) {                                         //This is an If statement for gamepad button y.
         }
-        if (cSensorName.equals(0)) {
-        }
-        if (irsSensorName.signalDetected()){
-        }
-        if (tSensorName.isPressed()){
-        }
-        if (usSensorName.equals(0)){
-        }
-        if (gSensorName.equals(0)){
-        }
-        if (cpsSensorName.equals(0)){
-        }
-        if (lsensorName.equals(0)){
-        }
+
         //  WARNING:(2)
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
