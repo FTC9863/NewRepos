@@ -16,7 +16,20 @@ public class MRDV2 extends OpMode {
     DcMotor MotorJointL;   //5/8
     DcMotor MotorJointR;   //6/8
     DcMotor ArmMotor;      //7/8
-    Servo ContinuousServo;
+    //DcMotor motorName;     //8/8
+
+    Servo sal;               //01/12             //sal is "Servo Arm Left"
+    Servo sar;               //02/12             //sar is "Servo Arm Right"
+    //Servo servoName;       //03/12
+    //Servo servoName;       //04/12
+    //Servo servoName;       //05/12
+    //Servo servoName;       //06/12
+    //Servo servoName;       //07/12
+    //Servo servoName;       //08/12
+    //Servo servoName;       //09/12
+    //Servo servoName;       //10/12
+    //Servo servoName;       //11/12
+    //Servo servoName;       //12/12
 
     public MRDV2() {
     }
@@ -34,8 +47,8 @@ public class MRDV2 extends OpMode {
         ArmMotor = hardwareMap.dcMotor.get("AM");
         //ArmMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        ContinuousServo = hardwareMap.servo.get("CS1");
-        //CS1.setDirection(Servo.Direction.REVERSE);
+        sal = hardwareMap.servo.get("sal");
+        sar = hardwareMap.servo.get("sar");
     }
     @Override
     public void loop() {
@@ -49,6 +62,9 @@ public class MRDV2 extends OpMode {
         float direction = gamepad1.right_stick_y;
         float right = throttle - direction;
         float left = throttle + direction;
+        float mArm = gamepad2.left_stick_y;  //m-Arm is Motor Arm
+        float sArm = gamepad2.left_stick_y;  //s-Arm is Servo Arm
+
 
         right = Range.clip(right, -1, 1);
         left = Range.clip(left, -1, 1);
@@ -58,6 +74,10 @@ public class MRDV2 extends OpMode {
 
         RightDrive1.setPower(right);
         LeftDrive1.setPower(left);
+
+        ArmMotor.setPower(mArm);
+        sal.setPosition(sArm);
+        sar.setPosition(-sArm);
 
         if(leftDPAD == true){
             drivetype = true;
