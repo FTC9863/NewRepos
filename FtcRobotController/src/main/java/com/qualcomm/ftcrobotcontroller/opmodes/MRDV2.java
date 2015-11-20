@@ -79,19 +79,19 @@ public class MRDV2 extends OpMode {
         sal.setPosition(sArm);
         sar.setPosition(-sArm);
 
-        if(leftDPAD == true){
+        if(leftDPAD){
             drivetype = true;
         }
-        if(rightDPAD == true){
+        if(rightDPAD){
             drivetype = false;
         }
-        if(drivetype == true){
+        if(drivetype){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -1, 1);
             RightDrive1.setPower(right);
             LeftDrive1.setPower(left);
         }
-        if(drivetype == false){
+        if(!drivetype){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -0.4f, 0.4f);
             RightDrive1.setPower(-right);
@@ -101,10 +101,6 @@ public class MRDV2 extends OpMode {
             RightDrive2.setPower(-right);
             LeftDrive2.setPower(-right);
         }
-
-        //  WARNING:(2)
-        //  CODE BELOW NOT YET MODIFIED
-        //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
 
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("left tgt pwr", "left  pwr: " + String.format("%.2f", left));
