@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 public class MRDV2 extends OpMode {
-
     Boolean drivetype;
 
     DcMotor LeftDrive1;    //1/8
@@ -62,9 +61,17 @@ public class MRDV2 extends OpMode {
         float direction = gamepad1.right_stick_y;
         float right = throttle - direction;
         float left = throttle + direction;
-        float mArm = gamepad2.left_stick_y;  //m-Arm is Motor Arm
-        float sArm = gamepad2.left_stick_y;  //s-Arm is Servo Arm
+        float mArm = gamepad2.right_stick_y;  //m-Arm is Motor Arm
+        float sArm = gamepad2.left_stick_y;   //s-Arm is Servo Arm
+        float sArm2 = 0;                      //sArm2 is Servo Arm***Part 2***
 
+        if(sArm < 0.1){      //There are 3 servo parts. One is a Threshold, The next is the one that
+            sArm2 = 0;       //gets modifed for sArm3, and sArm3 is what actually controls the servo
+        }
+        else if(sArm >= 0.1){
+            sArm2 = sArm;
+        }
+        double sArm3 =(sArm2/2)+0.5;           //sArm3 is Servo Arm***Part 3***
 
         right = Range.clip(right, -1, 1);
         left = Range.clip(left, -1, 1);
@@ -76,8 +83,8 @@ public class MRDV2 extends OpMode {
         LeftDrive1.setPower(left);
 
         ArmMotor.setPower(mArm);
-        sal.setPosition(sArm);
-        sar.setPosition(-sArm);
+        sal.setPosition(sArm3);
+        sar.setPosition(-sArm3);
 
         if(leftDPAD){
             drivetype = true;
