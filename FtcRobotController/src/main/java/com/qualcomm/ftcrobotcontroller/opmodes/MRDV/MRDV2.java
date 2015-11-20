@@ -92,13 +92,13 @@ public class MRDV2 extends OpMode {
         if(rightDPAD){
             drivetype = false;
         }
-        if(drivetype){
+        if(drivetype == true){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -1, 1);
             RightDrive1.setPower(right);
             LeftDrive1.setPower(left);
         }
-        if(!drivetype){
+        if(drivetype == false){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -0.4f, 0.4f);
             RightDrive1.setPower(-right);
