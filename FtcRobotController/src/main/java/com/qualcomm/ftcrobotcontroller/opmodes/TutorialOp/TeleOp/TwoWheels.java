@@ -1,7 +1,5 @@
 package com.qualcomm.ftcrobotcontroller.opmodes.TutorialOp.TeleOp;
 
-import com.qualcomm.ftcrobotcontroller.opmodes.MRDV1;
-import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
