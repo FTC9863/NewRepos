@@ -29,10 +29,10 @@ public class SMGBotOp extends OpMode {
     }
     @Override
     public void init() {
-        motorName = hardwareMap.dcMotor.get("motorName");         //This is what the phone calls the motor
-        motorName.setDirection(DcMotor.Direction.REVERSE);        //This is saying in the code that the motor is in reverse mode
-        servoName = hardwareMap.servo.get("servoName");           //This is what the phone calls the motor
-        servoName.setDirection(Servo.Direction.REVERSE);          //This is saying in the code that the servo is in reverse mode
+        //motorName = hardwareMap.dcMotor.get("motorName");         //This is what the phone calls the motor
+      //  motorName.setDirection(DcMotor.Direction.REVERSE);        //This is saying in the code that the motor is in reverse mode
+       // servoName = hardwareMap.servo.get("servoName");           //This is what the phone calls the motor
+      //  servoName.setDirection(Servo.Direction.REVERSE);          //This is saying in the code that the servo is in reverse mode
         servoPosition = 0.2;                                      //This is stating the servoPosition variable's value
 
     }
@@ -50,8 +50,8 @@ public class SMGBotOp extends OpMode {
         right = (float) scaleInput(right);                         //This is making the variables right and left more accurate
         left = (float) scaleInput(left);                          //at lower values
 
-        motorName.setPower(right);                                //This is making the variable motorName the power of the
-        motorName.setPower(left);                                 //variables right and left.
+     //   motorName.setPower(right);                                //This is making the variable motorName the power of the
+     //   motorName.setPower(left);                                 //variables right and left.
 
         if (gamepad1.a) {                                         //This is an If statement for gamepad button a.
         }
@@ -62,7 +62,7 @@ public class SMGBotOp extends OpMode {
         //  CODE BELOW NOT YET MODIFIED
         //  CODE BELOW NOT YET COMPLETELY UNDERSTOOD
         servoPosition = Range.clip(servoPosition, servoName_MIN_RANGE, servoName_MAX_RANGE);
-        servoName.setPosition(servoPosition);
+      //  servoName.setPosition(servoPosition);
 
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("arm", "arm:  " + String.format("%.2f", servoPosition));

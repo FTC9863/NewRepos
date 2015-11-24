@@ -161,14 +161,15 @@ public class MRDV1_Legacy_Test extends OpMode {
         if(drivetype == true){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -1, 1);
-            motorRight.setPower(right);
-            motorLeft.setPower(left);
+            motorRight.setPower(-left);
+            motorLeft.setPower(-right);
         }
         if(drivetype == false){
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -0.4f, 0.4f);
             motorRight.setPower(-right);
             motorLeft.setPower(-right);
+            motorjointLeft.setPower(left);
             motorjointLeft.setPower(left);
             motorRight2.setPower(-right);
             motorLeft2.setPower(-right);
