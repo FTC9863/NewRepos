@@ -56,6 +56,7 @@ public class FtcOpModeRegister implements OpModeRegister {
      */
 
     manager.register("NullOp", NullOp.class);
+    manager.register("JimmyRobot", JimmyRobot.class);
     manager.register("MRDV1_Legacy_Test", MRDV1_Legacy_Test.class);
     manager.register("MRDV2", MRDV2.class);
     manager.register("MRDV1", MRDV1.class);
