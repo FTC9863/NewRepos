@@ -41,6 +41,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.LED;
 import com.qualcomm.robotcore.hardware.TouchSensor;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 
 public class ColorSensorDriver extends LinearOpMode {
 
@@ -49,6 +50,7 @@ public class ColorSensorDriver extends LinearOpMode {
   public ColorSensorDevice device = ColorSensorDevice.MODERN_ROBOTICS_I2C;
 
   ColorSensor colorSensor;
+  UltrasonicSensor sonar;
   DeviceInterfaceModule cdim;
   LED led;
   TouchSensor t;
@@ -57,6 +59,8 @@ public class ColorSensorDriver extends LinearOpMode {
   public void runOpMode() throws InterruptedException {
     hardwareMap.logDevices();
 
+    sonar = hardwareMap.ultrasonicSensor.get("");
+    sonar.getUltrasonicLevel();
     cdim = hardwareMap.deviceInterfaceModule.get("dim");
     switch (device) {
       case HITECHNIC_NXT:

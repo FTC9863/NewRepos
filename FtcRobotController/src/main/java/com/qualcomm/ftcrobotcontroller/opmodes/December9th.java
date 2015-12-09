@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.Range;
  * <p>
  * Enables control of the robot via the gamepad
  */
-public class MRDV1 extends OpMode {
+public class December9th extends OpMode {
 
     /*
      * Note: the configuration of the servos is such that
@@ -52,7 +52,7 @@ public class MRDV1 extends OpMode {
     /**
      * Constructor
      */
-    public MRDV1() {
+    public December9th() {
 
     }
 
@@ -80,12 +80,12 @@ public class MRDV1 extends OpMode {
         motorLeft2.setDirection(DcMotor.Direction.REVERSE);
         motorArmJoint = hardwareMap.dcMotor.get("m5");
 
-        fingerLeft = hardwareMap.servo.get("sfl");
-        fingerRight = hardwareMap.servo.get("sfr");
+        //fingerLeft = hardwareMap.servo.get("sfl");
+        //fingerRight = hardwareMap.servo.get("sfr");
 
         // assign the starting position of the wrist and claw
-        fingerLeftPosition = 0.1;
-        fingerRightPosition = 0.1;
+        //fingerLeftPosition = 0.1;
+        //fingerRightPosition = 0.1;
     }
 
     /*
@@ -151,23 +151,23 @@ public class MRDV1 extends OpMode {
         }
         if(gamepad2.a){
 
-            fingerLeftPosition += fingerLeftDelta;
-            fingerRightPosition -= fingerRightDelta;
+          //  fingerLeftPosition += fingerLeftDelta;
+          //  fingerRightPosition -= fingerRightDelta;
         }
         if(gamepad2.b){
 
-            fingerLeftPosition -= fingerLeftDelta;
-            fingerRightPosition += fingerRightDelta;
+          //  fingerLeftPosition -= fingerLeftDelta;
+          //  fingerRightPosition += fingerRightDelta;
         }
 
 
         // clip the position values so that they never exceed their allowed range.
-        fingerLeftPosition = Range.clip(fingerLeftPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
-        fingerRightPosition = Range.clip(fingerRightPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
+        //fingerLeftPosition = Range.clip(fingerLeftPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
+        //fingerRightPosition = Range.clip(fingerRightPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
 
         // write position values to the wrist and claw servo
-        fingerLeft.setPosition(fingerLeftPosition);
-        fingerRight.setPosition(fingerRightPosition);
+        //fingerLeft.setPosition(fingerLeftPosition);
+        //fingerRight.setPosition(fingerRightPosition);
 
 		/*
 		 * Send telemetry data back to driver station. Note that if we are using
