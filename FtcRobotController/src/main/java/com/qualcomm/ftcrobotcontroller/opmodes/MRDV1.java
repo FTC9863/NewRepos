@@ -46,7 +46,7 @@ public class MRDV1 extends OpMode {
     DcMotor motorLeft2;
     DcMotor motorArmJoint;
 
-    Servo fingerLeft;
+    //Servo fingerLeft;
      Servo fingerRight;
 
     /**
@@ -80,11 +80,11 @@ public class MRDV1 extends OpMode {
         motorLeft2.setDirection(DcMotor.Direction.REVERSE);
         motorArmJoint = hardwareMap.dcMotor.get("m5");
 
-        fingerLeft = hardwareMap.servo.get("sfl");
+        //fingerLeft = hardwareMap.servo.get("sfl");
         fingerRight = hardwareMap.servo.get("sfr");
 
         // assign the starting position of the wrist and claw
-        fingerLeftPosition = 0.1;
+        //fingerLeftPosition = 0.1;
         fingerRightPosition = 0.1;
     }
 
@@ -151,22 +151,22 @@ public class MRDV1 extends OpMode {
         }
         if(gamepad2.a){
 
-            fingerLeftPosition += fingerLeftDelta;
+            //fingerLeftPosition += fingerLeftDelta;
             fingerRightPosition -= fingerRightDelta;
         }
         if(gamepad2.b){
 
-            fingerLeftPosition -= fingerLeftDelta;
+            //fingerLeftPosition -= fingerLeftDelta;
             fingerRightPosition += fingerRightDelta;
         }
 
 
         // clip the position values so that they never exceed their allowed range.
-        fingerLeftPosition = Range.clip(fingerLeftPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
+        //fingerLeftPosition = Range.clip(fingerLeftPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
         fingerRightPosition = Range.clip(fingerRightPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
 
         // write position values to the wrist and claw servo
-        fingerLeft.setPosition(fingerLeftPosition);
+        //fingerLeft.setPosition(fingerLeftPosition);
         fingerRight.setPosition(fingerRightPosition);
 
 		/*
