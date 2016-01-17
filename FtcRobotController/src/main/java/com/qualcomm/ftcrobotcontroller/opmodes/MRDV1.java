@@ -146,8 +146,8 @@ public class MRDV1 extends OpMode {
             motorLeft.setPower(-right);
             motorjointLeft.setPower(-left);
             motorjointRight.setPower(-left);
-            motorRight2.setPower(right/2);
-            motorLeft2.setPower(right/2);
+            motorRight2.setPower(right);
+            motorLeft2.setPower(right);
         }
         if(gamepad2.a){
 
