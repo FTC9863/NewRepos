@@ -28,10 +28,10 @@ public class MRDV1 extends OpMode {
     double fingerLeftPosition;
 
     // amount to change the arm servo position.
-    double fingerLeftDelta = 0.01;
+    double RotatorPosition = 0.5;
 
     // position of the claw servo
-    double fingerRightPosition;
+    double ReleasePosition;
 
     // amount to change the claw servo position by
     double fingerRightDelta = 0.01;
@@ -46,8 +46,8 @@ public class MRDV1 extends OpMode {
     DcMotor motorLeft2;
     DcMotor motorArmJoint;
 
-    //Servo fingerLeft;
-     Servo fingerRight;
+    Servo Rotator;
+     Servo Release;
 
     /**
      * Constructor
@@ -80,12 +80,12 @@ public class MRDV1 extends OpMode {
         motorLeft2.setDirection(DcMotor.Direction.REVERSE);
         motorArmJoint = hardwareMap.dcMotor.get("m5");
 
-        //fingerLeft = hardwareMap.servo.get("sfl");
-        fingerRight = hardwareMap.servo.get("sfr");
+        Rotator = hardwareMap.servo.get("ro");
+        Release = hardwareMap.servo.get("re");
 
         // assign the starting position of the wrist and claw
         //fingerLeftPosition = 0.1;
-        fingerRightPosition = 0.1;
+        ReleasePosition = 0.1;
     }
 
     /*
@@ -114,7 +114,7 @@ public class MRDV1 extends OpMode {
         // clip the right/left values so that the values never exceed +/- 1
         right = Range.clip(right, -1, 1);
         left = Range.clip(left, -1, 1);
-        arm = Range.clip(arm, -1, 1);
+        arm = Range.clip(arm, -0.4f, 0.4f);
 
         // scale the joystick value to make it easier to control
         // the robot more precisely at slower speeds.
@@ -149,25 +149,41 @@ public class MRDV1 extends OpMode {
             motorRight2.setPower(right);
             motorLeft2.setPower(right);
         }
-        if(gamepad2.a){
+        if(gamepad2.x){
 
             //fingerLeftPosition += fingerLeftDelta;
-            fingerRightPosition -= fingerRightDelta;
+            ReleasePosition -= fingerRightDelta;
         }
-        if(gamepad2.b){
+        if(gamepad2.y){
 
             //fingerLeftPosition -= fingerLeftDelta;
-            fingerRightPosition += fingerRightDelta;
+            ReleasePosition += fingerRightDelta;
+        }
+        if(gamepad2.a == false){
+
+            //fingerLeftPosition += fingerLeftDelta;
+            RotatorPosition = 0.9;
+        }
+        if(gamepad2.b == false){
+
+            //fingerLeftPosition -= fingerLeftDelta;
+            RotatorPosition = 0.1;
+        }
+        if(gamepad2.b == false && gamepad2.a == false){
+
+            //fingerLeftPosition -= fingerLeftDelta;
+            RotatorPosition = 0.5;
         }
 
 
         // clip the position values so that they never exceed their allowed range.
         //fingerLeftPosition = Range.clip(fingerLeftPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
-        fingerRightPosition = Range.clip(fingerRightPosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
+        ReleasePosition = Range.clip(ReleasePosition, FINGER_MIN_RANGE, FINGER_MAX_RANGE);
 
         // write position values to the wrist and claw servo
         //fingerLeft.setPosition(fingerLeftPosition);
-        fingerRight.setPosition(fingerRightPosition);
+        Release.setPosition(ReleasePosition);
+        Rotator.setPosition(RotatorPosition);
 
 		/*
 		 * Send telemetry data back to driver station. Note that if we are using
